@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href = "/asset123/styles.css" rel = "stylesheet" type = "text/css"/>
+    <meta charset="UTF-8">
+    <title>node.js basic learn in one day</title>
+</head>
+
+<body>
+<% include partial/navi.ejs %>
+<h1>contact me</h1>
+<p>5146611660</p>
+<form id = "contact-form" action = "/contact" method = "POST">
+    <label for = "who">who do you want to ccontact?</label>
+    <input type= "text" name = "who" value = <%=qs.name %>>
+    <label for = "department">which department you looking for</label>
+    <input type = "text" name = "department" value = <%=qs.department %>>
+    <label for = "email">your email</label>
+    <input type = "email" name="email" />
+    <input type = "submit" value = "submit"/>
+
+</form>
+</body>
+</html>

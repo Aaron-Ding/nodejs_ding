@@ -1,13 +1,22 @@
 var express = require('express');
-
+var bodyParser = require('body-parser');
 var app = express();
 app.set('view engine','ejs');
-
+app.use('/asset',express.static('asset'));
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.get('/',function(req,res){
-    res.sendFile(__dirname + '/index.html');
+    //res.sendFile(__dirname + '/views/index.html');
+    res.render('index');
 });
 app.get('/contact',function(req,res){
-    res.sendFile(__dirname + '/contact.html');
+    console.log(req.query);
+    //.sendFile(__dirname + '/views/contact.html');
+    res.render('contact',{qs:req.query});
+});
+
+app.post('/contact',urlencodedParser,function(req,res){
+    console.log(req.body);
+    res.render('submit-success',{data:req.body});
 });
 app.get('/profile/:id',function(req,res){
     var data = {
